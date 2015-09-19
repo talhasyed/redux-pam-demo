@@ -4,14 +4,14 @@ import { createStore } from 'redux';
 import {
   START_VISIT, CANCEL_VISIT,
   RESET_DATE, ENTER_DATE,
-  VisitStates, DefaultVisitState,
+  ANSWER_QUESTION,
 } from './actions';
 
-/*
- * reducers
- */
+import {
+  VisitStates, DefaultVisitState, DefaultQuestionsList
+} from './constants'
 
-function visitState(state=DefaultVisitState, action) {
+function visitState(state = DefaultVisitState, action) {
   switch (action.type) {
     case START_VISIT:
       return VisitStates.IN_PROGRESS;
@@ -22,7 +22,7 @@ function visitState(state=DefaultVisitState, action) {
   }
 }
 
-function completedDate(state=null, action) {
+function completedDate(state = null, action) {
   switch (action.type) {
     case RESET_DATE:
       return null;
@@ -33,10 +33,15 @@ function completedDate(state=null, action) {
   }
 }
 
+function questionsList(state = DefaultQuestionsList, action) {
+  return state;
+}
+
 // Store:
-let reactReduxPamApp = createStore(combineReducers({
+const reactReduxPamApp = createStore(combineReducers({
   visitState,
-  completedDate
+  completedDate,
+  questionsList
 }));
 
 export default reactReduxPamApp;

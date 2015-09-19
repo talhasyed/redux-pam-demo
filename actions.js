@@ -8,16 +8,7 @@ export const CANCEL_VISIT = 'CANCEL_VISIT';
 export const ENTER_DATE = 'ENTER_DATE';
 export const RESET_DATE = 'RESET_DATE';
 
-/*
- * other constants
- */
-
-export const VisitStates = {
-  SCHEDULED: 'SCHEDULED',
-  IN_PROGRESS: 'IN_PROGRESS'
-};
-
-export const DefaultVisitState = VisitStates.SCHEDULED;
+export const ANSWER_QUESTION = 'ANSWER_QUESTION';
 
 /*
  * action creators
@@ -37,4 +28,8 @@ export function enterDate(date) {
 
 export function resetDate() {
   return { type: RESET_DATE };
+}
+
+export function answerQuestion(questionId, answer) {
+  return { type: ANSWER_QUESTION, questionId, answer };
 }

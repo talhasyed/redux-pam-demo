@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { enterDate, startVisit, cancelVisit, VisitStates } from '../actions';
+import { enterDate, startVisit, cancelVisit } from '../actions';
 import Visit from '../components/Visit'
 import reactReduxPamApp from '../reducers';
+import { VisitStates } from '../constants'
 
 // Map Redux state to component props
 function mapStateToProps(state)  {
@@ -15,10 +16,11 @@ function mapStateToProps(state)  {
   }
 
   return {
-    errors: errors(state),
-    buttonText: buttonText,
     visitState: state.visitState,
-    completedDate: state.completedDate
+    completedDate: state.completedDate,
+    questionsList: state.questionsList,
+    errors: errors(state),
+    buttonText: buttonText
   };
 }
 
