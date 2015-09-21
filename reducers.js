@@ -9,7 +9,7 @@ import {
 
 import {
   VisitStates, DefaultVisitState, DefaultQuestionsList
-} from './constants'
+} from './constants';
 
 function visitState(state = DefaultVisitState, action) {
   switch (action.type) {
@@ -34,7 +34,23 @@ function completedDate(state = null, action) {
 }
 
 function questionsList(state = DefaultQuestionsList, action) {
-  return state;
+  switch (action.type) {
+    case ANSWER_QUESTION:
+      let s = Object.assign({}, state);
+      let index = action.questionId - 1;
+      let question = Object.assign({}, state[index], {
+        answer: action.answer
+      });
+
+      return [
+        ...state.slice(0, index),
+        question,
+        ...state.slice(index + 1)
+      ];
+
+    default:
+      return state;
+  }
 }
 
 // Store:

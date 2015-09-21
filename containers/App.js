@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { enterDate, startVisit, cancelVisit } from '../actions';
+import { enterDate, startVisit, cancelVisit, answerQuestion } from '../actions';
 import Visit from '../components/Visit'
 import reactReduxPamApp from '../reducers';
 import { VisitStates } from '../constants'
@@ -27,8 +27,19 @@ function mapStateToProps(state)  {
 function errors(state) {
   let errors = [];
 
-  if (state.visitState === VisitStates.IN_PROGRESS && !state.completedDate) {
-    errors.push('Please add a Date');
+  if (state.visitState === VisitStates.IN_PROGRESS) {
+    if (!state.completedDate) {
+      errors.push('Please add a Date');
+    }
+
+    let missingRequiredQuestions = false;
+    for (let question of state.questionsList) {
+      if (question.required && !question.answer) {
+        missingRequiredQuestions = true;
+      }
+    }
+    if (missingRequiredQuestions)
+      errors.push('Please answer required questions');
   }
 
   return errors;
@@ -37,6 +48,10 @@ function errors(state) {
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
+    onEnterAnswer: (questionId, answer) => {
+      dispatch(answerQuestion(questionId, answer));
+    },
+
     onSubmitEnter: (e) => {
       dispatch(enterDate(e));
     },

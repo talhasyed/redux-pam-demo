@@ -1,16 +1,15 @@
-import React, { findDOMNode, Component, PropTypes } from 'react';
+import React, { Component, PropTypes, findDOMNode } from 'react';
 
 export default class CompletedDate extends Component {
   render() {
     return (
       <div>
-        <input type='date' ref='input' onChange={(e) => this.handleDateChange(e)}>
-          {this.props.date}
-        </input>
-
-        <button onClick={(e) => this.handleDateChange(e)}>
-          Enter Date
-        </button>
+        <p>
+          Enter the completion date
+        </p>
+        <input
+          type='date' ref='input'
+          onChange={(e) => this.handleDateChange(e)} value={this.props.date} />
       </div>
     );
   }

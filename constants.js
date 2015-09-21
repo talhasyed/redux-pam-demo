@@ -8,17 +8,26 @@ export const DefaultVisitState = VisitStates.SCHEDULED;
 export const DefaultQuestionsList = [
   {
     id: 1,
-    question: 'What day is it today?',
-    answer: ''
+    question: 'How many items were in stock?',
+    answer: '',
+    required: true
   },
   {
     id: 2,
-    question: 'How hot is it outside?',
-    answer: ''
+    question: 'Were the displays in good order?',
+    answer: '',
+    required: false
   },
   {
     id: 3,
-    question: 'What is your favourite food?',
-    answer: ''
+    question: 'Were there any damaged items?',
+    answer: '',
+    required: false
+  },
+  {
+    id: 4,
+    question: 'How were the fixtures?',
+    answer: '',
+    required: false
   }
 ];
