@@ -1,12 +1,32 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { enterDate, startVisit, cancelVisit, answerQuestion } from '../actions';
-import Visit from '../components/Visit'
-import reactReduxPamApp from '../reducers';
-import { VisitStates } from '../constants'
+import { toggleVisit, enterDate, answerQuestion } from '../actions';
+import Visit from '../components/Visit';
+import { VisitStates } from '../constants';
 
-// Map Redux state to component props
-function mapStateToProps(state)  {
+class App extends Component {
+  render() {
+    const { dispatch, buttonText, visitState, completedDate, questionsList, errors } = this.props;
+
+    return (
+      <Visit
+        buttonText={buttonText}
+        visitState={visitState}
+        completedDate={completedDate}
+        questionsList={questionsList}
+        errors={errors}
+        onStartVisitClick={() => dispatch(toggleVisit())}
+        onSubmitEnter={date =>
+          dispatch(enterDate(date))
+        }
+        onEnterAnswer={(questionId, answer) =>
+          dispatch(answerQuestion(questionId, answer))
+        } />
+    );
+  }
+}
+
+function select(state) {
   let buttonText = null;
 
   if (state.visitState === VisitStates.SCHEDULED) {
@@ -38,6 +58,7 @@ function errors(state) {
         missingRequiredQuestions = true;
       }
     }
+
     if (missingRequiredQuestions)
       errors.push('Please answer required questions');
   }
@@ -45,33 +66,4 @@ function errors(state) {
   return errors;
 }
 
-// Map Redux actions to component props
-function mapDispatchToProps(dispatch) {
-  return {
-    onEnterAnswer: (questionId, answer) => {
-      dispatch(answerQuestion(questionId, answer));
-    },
-
-    onSubmitEnter: (e) => {
-      dispatch(enterDate(e));
-    },
-
-    onStartVisitClick: () => {
-      var visitState = reactReduxPamApp.getState().visitState;
-
-      if (visitState === 'SCHEDULED') {
-        dispatch(startVisit());
-      } else {
-        dispatch(cancelVisit());
-      }
-    }
-  };
-}
-
-// Connected Component:
-let App = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Visit);
-
-export default App;
+export default connect(select)(App);

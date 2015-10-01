@@ -1,22 +1,15 @@
 import { combineReducers } from 'redux';
 import { createStore } from 'redux';
-
-import {
-  START_VISIT, CANCEL_VISIT,
-  RESET_DATE, ENTER_DATE,
-  ANSWER_QUESTION,
-} from './actions';
-
-import {
-  VisitStates, DefaultVisitState, DefaultQuestionsList
-} from './constants';
+import { TOGGLE_VISIT, ENTER_DATE, ANSWER_QUESTION } from './actions';
+import { VisitStates, DefaultVisitState, DefaultQuestionsList } from './constants';
 
 function visitState(state = DefaultVisitState, action) {
   switch (action.type) {
-    case START_VISIT:
-      return VisitStates.IN_PROGRESS;
-    case CANCEL_VISIT:
-      return VisitStates.SCHEDULED;
+    case TOGGLE_VISIT:
+      if (state === VisitStates.IN_PROGRESS)
+        return VisitStates.SCHEDULED;
+      else if (state === VisitStates.SCHEDULED)
+        return VisitStates.IN_PROGRESS;
     default:
       return state;
   }
