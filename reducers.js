@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { createStore } from 'redux';
-import { TOGGLE_VISIT, ENTER_DATE, ANSWER_QUESTION } from './actions';
+import { TOGGLE_VISIT, ENTER_DATE, RESET_DATE, ANSWER_QUESTION } from './actions';
 import { VisitStates, DefaultVisitState, DefaultQuestionsList } from './constants';
 
 function visitState(state = DefaultVisitState, action) {
@@ -29,7 +29,6 @@ function completedDate(state = null, action) {
 function questionsList(state = DefaultQuestionsList, action) {
   switch (action.type) {
     case ANSWER_QUESTION:
-      let s = Object.assign({}, state);
       let index = action.questionId - 1;
       let question = Object.assign({}, state[index], {
         answer: action.answer

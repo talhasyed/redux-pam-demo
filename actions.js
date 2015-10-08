@@ -1,5 +1,3 @@
-import reactReduxPamApp from './reducers';
-
 /*
  * action types
  */

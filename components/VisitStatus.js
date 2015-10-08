@@ -1,8 +1,10 @@
+import { VisitStates } from '../constants';
 import React, { findDOMNode, Component, PropTypes } from 'react';
 
 export default class VisitStatus extends Component {
   render() {
-    const { state, onStartVisitClick, buttonText } = this.props;
+    const { state, onStartVisitClick } = this.props;
+    let buttonText = this.buttonText(state);
 
     return (
       <div>
@@ -12,6 +14,14 @@ export default class VisitStatus extends Component {
         </button>
       </div>
     );
+  }
+
+  buttonText(visitState) {
+    if (visitState === VisitStates.SCHEDULED) {
+      return 'Start';
+    } else {
+      return 'Cancel';
+    }
   }
 }
 

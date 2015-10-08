@@ -8,8 +8,11 @@ export default class QuestionsList extends Component {
     return (
       <ul style={style}>
         {this.props.questionsList.map((question, index) =>
-          <Question {...question}
-                index={index} key={question.id} onEnterAnswer={this.props.onEnterAnswer} />
+          <Question
+                {...question}
+                index={index}
+                key={question.id}
+                onEnterAnswer={this.props.onEnterAnswer} />
         )}
       </ul>
     );

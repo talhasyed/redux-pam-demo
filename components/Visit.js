@@ -5,7 +5,7 @@ import VisitAttributes from './VisitAttributes';
 export default class Visit extends React.Component {
   render() {
     const {
-      buttonText, visitState, completedDate, questionsList,
+      visitState, completedDate, questionsList,
       errors,
       onStartVisitClick, onSubmitEnter, onEnterAnswer
     } = this.props;
@@ -14,12 +14,10 @@ export default class Visit extends React.Component {
       <div>
         <VisitStatus
           state={visitState}
-          onStartVisitClick={onStartVisitClick}
-          buttonText={buttonText} />
+          onStartVisitClick={onStartVisitClick} />
 
         <VisitAttributes
           visitState={visitState}
-          buttonText={buttonText}
           completedDate={completedDate}
           questionsList={questionsList}
           errors={errors}
