@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Question from './Question';
 
-export default class QuestionsList extends Component {
+class QuestionsList extends Component {
   render() {
     let style = {listStyle: 'none'};
 
@@ -28,3 +28,5 @@ QuestionsList.propTypes = {
     answer: PropTypes.string.isRequired
   }).isRequired).isRequired
 };
+
+export default QuestionsList;

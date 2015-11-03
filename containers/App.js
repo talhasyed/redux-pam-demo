@@ -9,19 +9,21 @@ class App extends Component {
     const { dispatch, buttonText, visitState, completedDate, questionsList, errors } = this.props;
 
     return (
-      <Visit
-        buttonText={buttonText}
-        visitState={visitState}
-        completedDate={completedDate}
-        questionsList={questionsList}
-        errors={errors}
-        onStartVisitClick={() => dispatch(toggleVisit())}
-        onSubmitEnter={date =>
-          dispatch(enterDate(date))
-        }
-        onEnterAnswer={(questionId, answer) =>
-          dispatch(answerQuestion(questionId, answer))
-        } />
+      <div>
+        <Visit
+          buttonText={buttonText}
+          visitState={visitState}
+          completedDate={completedDate}
+          questionsList={questionsList}
+          errors={errors}
+          onStartVisitClick={() => dispatch(toggleVisit())}
+          onSubmitEnter={date =>
+            dispatch(enterDate(date))
+          }
+          onEnterAnswer={(questionId, answer) =>
+            dispatch(answerQuestion(questionId, answer))
+          } />
+      </div>
     );
   }
 }

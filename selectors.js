@@ -13,7 +13,7 @@ function missingCompletedDateErrors(completedDate, visitState) {
 function missingRequiredQuestionsErrors(missingRequiredQuestionsCount) {
   let errors = [];
   if (missingRequiredQuestionsCount > 0) {
-    errors.push(`You are missing ${missingRequiredQuestionsCount} questions`);
+    errors.push(`You are missing ${missingRequiredQuestionsCount} question(s)`);
   }
 
   return errors;

@@ -1,6 +1,6 @@
-import React, { Component, PropTypes, findDOMNode } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-export default class Question extends Component {
+class Question extends Component {
   render() {
     return (
       <li>
@@ -17,8 +17,7 @@ export default class Question extends Component {
   }
 
   handleAnswerChange(e) {
-    const node = findDOMNode(this.refs.input);
-    const value = node.value.trim();
+    const value = e.target.value.trim();
 
     this.props.onEnterAnswer(this.props.id, value);
   }
@@ -31,3 +30,5 @@ Question.propTypes = {
   required: PropTypes.bool.isRequired,
   onEnterAnswer: PropTypes.func.isRequired
 };
+
+export default Question;

@@ -1,7 +1,7 @@
 import { VisitStates } from '../constants';
 import React, { findDOMNode, Component, PropTypes } from 'react';
 
-export default class VisitStatus extends Component {
+class VisitStatus extends Component {
   render() {
     const { state, onStartVisitClick } = this.props;
     let buttonText = this.buttonText(state);
@@ -28,3 +28,5 @@ export default class VisitStatus extends Component {
 VisitStatus.propTypes = {
   state: PropTypes.string.isRequired
 };
+
+export default VisitStatus;

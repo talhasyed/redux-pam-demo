@@ -1,6 +1,6 @@
-import React, { Component, PropTypes, findDOMNode } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-export default class CompletedDate extends Component {
+class CompletedDate extends Component {
   render() {
     return (
       <div>
@@ -15,8 +15,7 @@ export default class CompletedDate extends Component {
   }
 
   handleDateChange(e) {
-    const node = findDOMNode(this.refs.input);
-    const date = node.value.trim();
+    const date = e.target.value.trim();
     this.props.onSubmit(date);
   }
 }
@@ -25,3 +24,5 @@ CompletedDate.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   date: PropTypes.string
 };
+
+export default CompletedDate;

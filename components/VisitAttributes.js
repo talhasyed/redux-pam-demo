@@ -4,7 +4,7 @@ import CompletedDate from './CompletedDate';
 import QuestionsList from './QuestionsList';
 import Errors from './Errors';
 
-export default class VisitAttributes extends React.Component {
+class VisitAttributes extends React.Component {
   render() {
     const {
       visitState,
@@ -42,3 +42,5 @@ VisitAttributes.propTypes = {
   onSubmitEnter: PropTypes.func.isRequired,
   onEnterAnswer: PropTypes.func.isRequired
 };
+
+export default VisitAttributes;

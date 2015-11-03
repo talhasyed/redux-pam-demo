@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import VisitStatus from './VisitStatus';
 import VisitAttributes from './VisitAttributes';
 
-export default class Visit extends React.Component {
+class Visit extends React.Component {
   render() {
     const {
       visitState, completedDate, questionsList,
@@ -27,3 +27,5 @@ export default class Visit extends React.Component {
     );
   }
 }
+
+export default Visit;

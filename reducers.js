@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { createStore } from 'redux';
 import { TOGGLE_VISIT, ENTER_DATE, RESET_DATE, ANSWER_QUESTION } from './actions';
 import { VisitStates, DefaultVisitState, DefaultQuestionsList } from './constants';
 
@@ -46,10 +45,10 @@ function questionsList(state = DefaultQuestionsList, action) {
 }
 
 // Store:
-const reactReduxPamApp = createStore(combineReducers({
+const reactReduxPamApp = combineReducers({
   visitState,
   completedDate,
   questionsList
-}));
+});
 
 export default reactReduxPamApp;

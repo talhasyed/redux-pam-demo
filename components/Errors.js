@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class Errors extends Component {
+class Errors extends Component {
   render() {
     return (
       <div>
@@ -17,3 +17,5 @@ export default class Errors extends Component {
 Errors.propTypes = {
   errors: PropTypes.array
 };
+
+export default Errors;
