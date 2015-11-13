@@ -20,7 +20,14 @@ function missingRequiredQuestionsErrors(missingRequiredQuestionsCount) {
 }
 
 const questionsSelector = (state) => state.questionsList;
-const completedDateSelector = (state) => state.completedDate;
+
+const completedDateSelector = (state) => {
+  const completedDate = state.completedDate.present;
+  return completedDate;
+}
+
+const completedDateWithHistorySelector = (state) => state.completedDate;
+
 const visitStateSelector = (state) => state.visitState;
 
 const missingRequiredQuestionsCountSelector = createSelector(
@@ -53,14 +60,38 @@ const errorsSelector = createSelector(
   }
 );
 
+const undoDisabledSelector = createSelector(
+  [completedDateWithHistorySelector],
+  (completedDateWithHistory) => {
+    if (completedDateWithHistory) {
+      return completedDateWithHistory.past.length === 0
+    } else {
+      return true;
+    }
+  }
+);
+const redoDisabledSelector = createSelector(
+  [completedDateWithHistorySelector],
+  (completedDateWithHistory) => {
+    if (completedDateWithHistory) {
+      return completedDateWithHistory.future.length === 0
+    } else {
+      return true;
+    }
+  }
+);
+
 export const visitsSelector = createSelector(
-  [questionsSelector, completedDateSelector, visitStateSelector, errorsSelector],
-  (questionsList, completedDate, visitState, errors) => {
+  [ questionsSelector, completedDateSelector, visitStateSelector,
+    errorsSelector, undoDisabledSelector, redoDisabledSelector],
+  (questionsList, completedDate, visitState, errors, undoDisabled, redoDisabled) => {
     return {
       questionsList: questionsList,
       completedDate: completedDate,
       visitState: visitState,
-      errors: errors
+      errors: errors,
+      undoDisabled: undoDisabled,
+      redoDisabled: redoDisabled
     }
   }
 );

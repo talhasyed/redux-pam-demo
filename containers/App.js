@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ActionCreators } from 'redux-undo'
 import { toggleVisit, enterDate, answerQuestion } from '../actions';
 import Visit from '../components/Visit';
+import Footer from '../components/Footer';
 import { visitsSelector } from '../selectors';
 
 class App extends Component {
@@ -23,6 +25,12 @@ class App extends Component {
           onEnterAnswer={(questionId, answer) =>
             dispatch(answerQuestion(questionId, answer))
           } />
+
+          <Footer
+            onUndo={() => dispatch(ActionCreators.undo())}
+            onRedo={() => dispatch(ActionCreators.redo())}
+            undoDisabled={this.props.undoDisabled}
+            redoDisabled={this.props.redoDisabled} />
       </div>
     );
   }

@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
+import undoable, { distinctState } from 'redux-undo'
+
 import { TOGGLE_VISIT, ENTER_DATE, RESET_DATE, ANSWER_QUESTION } from './actions';
 import { VisitStates, DefaultVisitState, DefaultQuestionsList } from './constants';
 
@@ -47,7 +49,7 @@ function questionsList(state = DefaultQuestionsList, action) {
 // Store:
 const reactReduxPamApp = combineReducers({
   visitState,
-  completedDate,
+  completedDate: undoable(completedDate, { filter: distinctState() }),
   questionsList
 });
 

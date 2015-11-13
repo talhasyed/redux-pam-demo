@@ -9,7 +9,6 @@ class Visit extends React.Component {
       errors,
       onStartVisitClick, onSubmitEnter, onEnterAnswer
     } = this.props;
-
     return (
       <div>
         <VisitStatus
