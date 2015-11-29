@@ -15,14 +15,14 @@ class CompletedDate extends Component {
   }
 
   handleDateChange(e) {
-    const date = e.target.value.trim();
-    this.props.onSubmit(date);
+    const date = e.target.value.trim()
+    this.props.onSubmit(date)
   }
 }
 
-CompletedDate.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  date: PropTypes.string
-};
+// CompletedDate.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+//   date: PropTypes.string
+// }
 
-export default CompletedDate;
+export default CompletedDate

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 
 class Errors extends Component {
   render() {
@@ -10,12 +10,12 @@ class Errors extends Component {
           )}
         </ul>
       </div>
-    );
+    )
   }
 }
 
-Errors.propTypes = {
-  errors: PropTypes.array
-};
+// Errors.propTypes = {
+//   errors: PropTypes.array
+// }
 
-export default Errors;
+export default Errors

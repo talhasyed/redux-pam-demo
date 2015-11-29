@@ -3,30 +3,46 @@ import Question from './Question';
 
 class QuestionsList extends Component {
   render() {
-    let style = {listStyle: 'none'};
+    let style = {listStyle: 'none'}
 
+debugger
+    const questions = this.props.questionsList.map( (question) =>
+      <Question
+            {...question}
+            index={question.id}
+            key={question.id}
+            onEnterAnswer={this.props.onEnterAnswer} />
+    )
+
+    // debugger
+    // debugger
     return (
-      <ul style={style}>
-        {this.props.questionsList.map((question, index) =>
-          <Question
-                {...question}
-                index={index}
-                key={question.id}
-                onEnterAnswer={this.props.onEnterAnswer} />
-        )}
-      </ul>
-    );
+
+
+      // var children = items.map(item => <span key={item.title} />);
+      // <div>{children}</div>
+      <div>
+        <ul style={style}>{questions}</ul>
+      </div>
+        // {this.props.questionsList.map((question, index) =>
+        //   <Question
+        //         {...question}
+        //         index={index}
+        //         key={question.id}
+        //         onEnterAnswer={this.props.onEnterAnswer} />
+        // )}
+    )
   }
 }
 
-QuestionsList.propTypes = {
-  onEnterAnswer: PropTypes.func.isRequired,
+// QuestionsList.propTypes = {
+//   onEnterAnswer: PropTypes.func.isRequired,
+//
+//   questionsList: PropTypes.arrayOf(PropTypes.shape({
+//     id: PropTypes.number.isRequired,
+//     question: PropTypes.string.isRequired,
+//     answer: PropTypes.string.isRequired
+//   }).isRequired).isRequired
+// };
 
-  questionsList: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    question: PropTypes.string.isRequired,
-    answer: PropTypes.string.isRequired
-  }).isRequired).isRequired
-};
-
-export default QuestionsList;
+export default QuestionsList

@@ -34,8 +34,10 @@ const missingRequiredQuestionsCountSelector = createSelector(
   [questionsSelector],
   (questions) => {
     return questions.filter(
-      question => question.required && !question.answer
-    ).length;
+      question => {
+        question.required && !question.answer
+      }
+    ).size;
   }
 );
 
@@ -64,7 +66,7 @@ const undoDisabledSelector = createSelector(
   [completedDateWithHistorySelector],
   (completedDateWithHistory) => {
     if (completedDateWithHistory) {
-      return completedDateWithHistory.past.length === 0
+      return completedDateWithHistory.past.size === 0
     } else {
       return true;
     }
@@ -74,7 +76,7 @@ const redoDisabledSelector = createSelector(
   [completedDateWithHistorySelector],
   (completedDateWithHistory) => {
     if (completedDateWithHistory) {
-      return completedDateWithHistory.future.length === 0
+      return completedDateWithHistory.future.size === 0
     } else {
       return true;
     }

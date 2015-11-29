@@ -13,6 +13,8 @@ class VisitAttributes extends React.Component {
       onSubmitEnter, onEnterAnswer
     } = this.props;
 
+    // debugger
+
     if (visitState === VisitStates.IN_PROGRESS) {
       return (
         <div>
@@ -30,17 +32,17 @@ class VisitAttributes extends React.Component {
   }
 }
 
-VisitAttributes.propTypes = {
-  visitState: PropTypes.string.isRequired,
-  completedDate: PropTypes.string,
-  questionsList: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    question: PropTypes.string.isRequired,
-    answer: PropTypes.string.isRequired
-  }).isRequired).isRequired,
-  errors: PropTypes.array,
-  onSubmitEnter: PropTypes.func.isRequired,
-  onEnterAnswer: PropTypes.func.isRequired
-};
+// VisitAttributes.propTypes = {
+//   visitState: PropTypes.string.isRequired,
+//   completedDate: PropTypes.string,
+//   questionsList: PropTypes.arrayOf(PropTypes.shape({
+//     id: PropTypes.number.isRequired,
+//     question: PropTypes.string.isRequired,
+//     answer: PropTypes.string.isRequired
+//   }).isRequired).isRequired,
+//   errors: PropTypes.array,
+//   onSubmitEnter: PropTypes.func.isRequired,
+//   onEnterAnswer: PropTypes.func.isRequired
+// };
 
 export default VisitAttributes;

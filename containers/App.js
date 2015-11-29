@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { ActionCreators } from 'redux-undo'
-import { toggleVisit, enterDate, answerQuestion } from '../actions';
-import Visit from '../components/Visit';
-import Footer from '../components/Footer';
-import { visitsSelector } from '../selectors';
+import { toggleVisit, enterDate, answerQuestion } from '../actions'
+import Visit from '../components/Visit'
+import Footer from '../components/Footer'
+import { visitsSelector } from '../selectors'
 
 class App extends Component {
   render() {
-    const { dispatch, buttonText, visitState, completedDate, questionsList, errors } = this.props;
+    const { dispatch, buttonText, visitState, completedDate, questionsList, errors } = this.props
 
     return (
       <div>

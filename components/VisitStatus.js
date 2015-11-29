@@ -25,8 +25,8 @@ class VisitStatus extends Component {
   }
 }
 
-VisitStatus.propTypes = {
-  state: PropTypes.string.isRequired
-};
+// VisitStatus.propTypes = {
+//   state: PropTypes.string.isRequired
+// };
 
 export default VisitStatus;

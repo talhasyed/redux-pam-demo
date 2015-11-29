@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 class Question extends Component {
   render() {
+    debugger
     return (
       <li>
         <div>
@@ -23,12 +24,12 @@ class Question extends Component {
   }
 }
 
-Question.propTypes = {
-  id: PropTypes.number.isRequired,
-  question: PropTypes.string.isRequired,
-  answer: PropTypes.string.isRequired,
-  required: PropTypes.bool.isRequired,
-  onEnterAnswer: PropTypes.func.isRequired
-};
+// Question.propTypes = {
+//   id: PropTypes.number.isRequired,
+//   question: PropTypes.string.isRequired,
+//   answer: PropTypes.string.isRequired,
+//   required: PropTypes.bool.isRequired,
+//   onEnterAnswer: PropTypes.func.isRequired
+// };
 
 export default Question;
