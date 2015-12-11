@@ -46,6 +46,7 @@
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.2.0",
-    "redux-devtools": "2.1.5"
+    "redux-devtools": "^2.1.5",
+    "redux-slider-monitor": "0.6.4"
   }
 }

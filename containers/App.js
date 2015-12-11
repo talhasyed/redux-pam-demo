@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { ActionCreators } from 'redux-undo'
 import { toggleVisit, enterDate, answerQuestion } from '../actions';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
+import SliderMonitor from 'redux-slider-monitor';
 
 import { visitsSelector } from '../selectors';
 import Visit from '../components/Visit';
@@ -35,7 +36,9 @@ class App extends Component {
             redoDisabled={this.props.redoDisabled} />
 
           <DebugPanel top right bottom>
-            <DevTools store={store} monitor={LogMonitor} />
+            // <DevTools store={store} monitor={LogMonitor} />
+            <DevTools store={store} monitor={SliderMonitor} />
+
           </DebugPanel>
       </div>
     );
