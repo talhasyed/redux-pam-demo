@@ -47,10 +47,10 @@ function questionsList(state = DefaultQuestionsList, action) {
 }
 
 // Store:
-const reactReduxPamApp = combineReducers({
+const reducers = {
   visitState,
   completedDate: undoable(completedDate, { filter: distinctState() }),
   questionsList
-});
+};
 
-export default reactReduxPamApp;
+export default reducers;
